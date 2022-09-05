@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-tree-table
+      author: Pavel
+      changes:
+        - createTable:
+            tableName: tree
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: request_time
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: topaz_tree
+                  type: jsonb
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tree_weight
+                  type: int
+                  constraints:
+                    nullable: false
