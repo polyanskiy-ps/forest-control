@@ -8,4 +8,5 @@ import java.util.List;
 public class TopazTreeDto {
     private int weight;
     private List<TopazTreeDto> children;
+    //test
 }
