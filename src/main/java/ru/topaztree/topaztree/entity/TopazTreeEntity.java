@@ -24,6 +24,8 @@ public class TopazTreeEntity {
     private LocalDateTime requestTime;
     @Column(name = "tree_weight")
     private int treeWeight;
+    @Column(name = "name")
+    private String name;
     @Column(name = "topaz_tree", columnDefinition = "jsonb")
     @Type(type = "jsonb")
     private TopazTreeDto topazTreeDto;

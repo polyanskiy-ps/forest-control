@@ -1,14 +1,14 @@
 **POST сохранение дерева и возврат его веса:**  
-localhost:8080/forest_control/save
+localhost:15410/api/v1/forest/save
 
 **POST возврат веса переданного дерева:**  
-localhost:8080/forest_control
+localhost:15410/api/v1/forest
 
 **GET возврат всех деревьев:**  
-localhost:8080/trees
+localhost:15410/api/v1/forest
 
 **GET возврат дерева по id:**  
-localhost:8080/tree{id}
+localhost:15410/api/v1/forest/tree
 
 
 

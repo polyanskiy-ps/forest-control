@@ -11,6 +11,7 @@ import ru.topaztree.topaztree.repository.TopazTreeRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -28,6 +29,7 @@ public class TopazTreeService {
         }
         return childrenWeight;
     }
+
     public int calculateWeightOfTree(TopazTreeDto topazTreeDto) {
         int weight;
         weight = topazTreeDto.getWeight() + calculateWeightOfChildren(topazTreeDto);
@@ -35,27 +37,26 @@ public class TopazTreeService {
     }
 
     public TopazForestDto convertToTopazForestDto(TopazTreeEntity topazTreeEntity) {
-        topazTreeEntity.setTopazTreeDto(null);
         return modelMapper.map(topazTreeEntity, TopazForestDto.class);
     }
 
 
     public List<TopazForestDto> getAllTrees() {
         List<TopazTreeEntity> topazTreeEntities = topazTreeRepository.findAll();
-        return MapperUtil.convertList(topazTreeEntities, this::convertToTopazForestDto);
+        List<TopazForestDto> list;
+        list = MapperUtil.convertList(topazTreeEntities, this::convertToTopazForestDto);
+        return list.stream().peek(tree -> tree.setTopazTreeDto(null)).collect(Collectors.toList());
     }
 
     public TopazForestDto findTreeById(Long id) {
-        TopazForestDto topazForestDto = new TopazForestDto();
-        topazForestDto.setRequestTime(topazTreeRepository.getReferenceById(id).getRequestTime());
-        topazForestDto.setTreeWeight(topazTreeRepository.getReferenceById(id).getTreeWeight());
-        topazForestDto.setTopazTreeDto(topazTreeRepository.getReferenceById(id).getTopazTreeDto());
-        return topazForestDto;
+        TopazTreeEntity topazTreeEntity = topazTreeRepository.getReferenceById(id);
+        return convertToTopazForestDto(topazTreeEntity);
     }
 
     public TopazTreeEntity saveInDataBase(TopazTreeDto topazTreeDto) {
         TopazTreeEntity topazTreeEntity = new TopazTreeEntity();
         topazTreeEntity.setRequestTime(LocalDateTime.now());
+        topazTreeEntity.setName(topazTreeDto.getName());
         topazTreeEntity.setTreeWeight(calculateWeightOfTree(topazTreeDto));
         topazTreeEntity.setTopazTreeDto(topazTreeDto);
         return topazTreeRepository.save(topazTreeEntity);

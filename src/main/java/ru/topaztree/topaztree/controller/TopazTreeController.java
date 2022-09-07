@@ -9,26 +9,28 @@ import ru.topaztree.topaztree.service.TopazTreeService;
 import java.util.List;
 
 @RestController
+@RequestMapping("api/v1/forest")
 public class TopazTreeController {
-
     @Autowired
     private TopazTreeService topazTreeService;
-    @PostMapping("/forest_control")
-    public int saveAndReturnTree(@RequestBody TopazTreeDto topazTreeDto) {
+
+    @PostMapping
+    public int returnTreeWeight(@RequestBody TopazTreeDto topazTreeDto) {
         return topazTreeService.calculateWeightOfTree(topazTreeDto);
     }
-    @PostMapping("/forest_control/save")
+
+    @PostMapping("/save")
     public int saveTree(@RequestBody TopazTreeDto topazTreeDto) {
         return topazTreeService.saveInDataBase(topazTreeDto).getTreeWeight();
     }
 
-    @GetMapping("/trees")
+    @GetMapping
     public List<TopazForestDto> getAll() {
         return topazTreeService.getAllTrees();
     }
 
-    @GetMapping("/tree{id}")
-    public TopazForestDto getTreeById(Long id) {
+    @GetMapping("/tree")
+    public TopazForestDto getTreeById(@RequestParam Long id) {
         return topazTreeService.findTreeById(id);
     }
 
