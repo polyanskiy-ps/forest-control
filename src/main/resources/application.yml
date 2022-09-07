@@ -1,6 +1,8 @@
 server:
   port: 15410
 spring:
+  application:
+    name: topaz-forest
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/topaz_tree_db
@@ -16,4 +18,7 @@ spring:
           use_jdbc_metadata_defaults: false
 liquibase:
   enable: true
+springdoc:
+  swagger-ui:
+    enabled: true
 
