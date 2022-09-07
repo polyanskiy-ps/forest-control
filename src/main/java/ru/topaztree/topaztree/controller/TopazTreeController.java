@@ -34,4 +34,9 @@ public class TopazTreeController {
         return topazTreeService.findTreeById(id);
     }
 
+    @DeleteMapping("/tree")
+    public void deleteTreeById(@RequestParam Long id) {
+        topazTreeService.deleteTreeById(id);
+    }
+
 }

@@ -53,6 +53,10 @@ public class TopazTreeService {
         return convertToTopazForestDto(topazTreeEntity);
     }
 
+    public void deleteTreeById(Long id) {
+        topazTreeRepository.deleteById(id);
+    }
+
     public TopazTreeEntity saveInDataBase(TopazTreeDto topazTreeDto) {
         TopazTreeEntity topazTreeEntity = new TopazTreeEntity();
         topazTreeEntity.setRequestTime(LocalDateTime.now());

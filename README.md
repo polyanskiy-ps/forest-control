@@ -10,6 +10,11 @@ localhost:15410/api/v1/forest
 **GET возврат дерева по id:**  
 localhost:15410/api/v1/forest/tree
 
+**DELETE удаление дерева по id:**  
+localhost:15410/api/v1/forest/tree
+
+
+
 
 
 **Пример JSON с деревом:**
