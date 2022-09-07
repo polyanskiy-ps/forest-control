@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.topaztree.topaztree.entity.TopazTreeEntity;
 
 @Repository
-public interface TopazTreeRepository extends JpaRepository<TopazTreeEntity, Integer> {
+public interface TopazTreeRepository extends JpaRepository<TopazTreeEntity, Long> {
 }

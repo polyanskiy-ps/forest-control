@@ -6,7 +6,7 @@ import java.util.List;
 
 @Data
 public class TopazTreeDto {
+    private String name;
     private int weight;
     private List<TopazTreeDto> children;
-    //test
 }
