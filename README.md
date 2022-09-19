@@ -13,8 +13,8 @@ localhost:15410/api/v1/forest/tree
 **DELETE удаление дерева по id:**  
 localhost:15410/api/v1/forest/tree
 
-**SWAGGER:**
-http://localhost:15410/swagger-ui/index.html#/
+**SWAGGER:**  
+localhost:15410/swagger-ui/index.html#/
 
 
 
